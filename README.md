@@ -11,7 +11,7 @@
 
 Esse é um projeto [Next.js](https://nextjs.org/) inicializado com [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Sobre 
+## Sobre
 
 O Mediana das Medianas é um projeto que é capaz de, a partir de um conjunto não ordenados de notas, encontrar a mediana desse conjunto sem precisar fazer uma ordenação. Para isso, utilizamos o algoritmo da mediana das medianas.
 ## Screenshots
