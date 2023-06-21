@@ -9,6 +9,22 @@ import Paper from "@mui/material/Paper";
 import getMedianOfMedians from "../medianOfMedians";
 import { Grades, Row } from "../types";
 
+const getGradeString = (grade: number) => {
+  if (grade > 8.9) {
+    return "SS";
+  } else if (grade > 6.9) {
+    return "MS";
+  } else if (grade > 4.9) {
+    return "MM";
+  } else if (grade > 2.9) {
+    return "MI";
+  } else if (grade > 0) {
+    return "II";
+  } else {
+    return "SR";
+  }
+};
+
 const getGradeNumber = (grade: string) => {
   switch (grade) {
     case "SS":
@@ -32,9 +48,10 @@ const getMedian = (grades: Grades) => {
   const gradesArray = Object.values(grades);
   const gradesNumbers = gradesArray.map((grade) => getGradeNumber(grade));
 
-  const medianOfMedians = getMedianOfMedians(gradesNumbers, 4);
+  const median = getMedianOfMedians(gradesNumbers, 4);
+  const medianString = getGradeString(median);
 
-  return medianOfMedians;
+  return `${medianString} (${median})`;
 };
 
 type GradesTableProps = {

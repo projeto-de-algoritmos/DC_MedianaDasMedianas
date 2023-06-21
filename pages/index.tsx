@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
       <Container maxWidth="lg">
         <Typography variant="h2" align="center" mt={10}>
-          Mediana das Medianas
+          Mediana das Notas dos Trabalhos
         </Typography>
 
         <Box my={10}>
