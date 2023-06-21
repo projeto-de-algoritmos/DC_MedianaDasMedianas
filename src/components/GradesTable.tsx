@@ -7,26 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import getMedianOfMedians from "../medianOfMedians";
-
-type Grade = "SS" | "MS" | "MM" | "MI" | "II" | "SR";
-
-type Grades = {
-  t01A: Grade;
-  t01P: Grade;
-  t02A: Grade;
-  t02P: Grade;
-  t03A: Grade;
-  t03P: Grade;
-  t04A: Grade;
-  t04P: Grade;
-  t05A: Grade;
-  t05P: Grade;
-};
-
-type Row = {
-  name: string;
-  grades: Grades;
-};
+import { Grades, Row } from "../types";
 
 const getGradeNumber = (grade: string) => {
   switch (grade) {
@@ -51,47 +32,16 @@ const getMedian = (grades: Grades) => {
   const gradesArray = Object.values(grades);
   const gradesNumbers = gradesArray.map((grade) => getGradeNumber(grade));
 
-  console.log(gradesNumbers);
-
   const medianOfMedians = getMedianOfMedians(gradesNumbers, 4);
 
   return medianOfMedians;
 };
 
-const rows: Row[] = [
-  {
-    name: "Aluno 1",
-    grades: {
-      t01A: "SS",
-      t01P: "SS",
-      t02A: "SS",
-      t02P: "SS",
-      t03A: "SS",
-      t03P: "SS",
-      t04A: "II",
-      t04P: "II",
-      t05A: "II",
-      t05P: "II",
-    },
-  },
-  {
-    name: "Aluno 2",
-    grades: {
-      t01A: "SS",
-      t01P: "SS",
-      t02A: "SS",
-      t02P: "SS",
-      t03A: "MS",
-      t03P: "MS",
-      t04A: "MS",
-      t04P: "MS",
-      t05A: "MS",
-      t05P: "MS",
-    },
-  },
-];
+type GradesTableProps = {
+  rows: Row[];
+};
 
-const GradesTable = () => {
+const GradesTable = ({ rows }: GradesTableProps) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -118,7 +68,9 @@ const GradesTable = () => {
           {rows.map(({ name, grades }) => (
             <TableRow key={name}>
               <TableCell>{name}</TableCell>
-              <TableCell>{getMedian(grades)}</TableCell>
+              <TableCell>
+                <strong>{getMedian(grades)}</strong>
+              </TableCell>
               <TableCell>{grades.t01A}</TableCell>
               <TableCell>{grades.t01P}</TableCell>
               <TableCell>{grades.t02A}</TableCell>
