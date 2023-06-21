@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Typography } from "@mui/material";
+import GradesTable from "../src/components/GradesTable";
 
 const Home: NextPage = () => {
   return (
@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Typography variant="h3">Template</Typography>
+      <GradesTable />
     </>
   );
 };
